@@ -25,6 +25,13 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
     basic.turnRgbLedOff()
 })
+function kran3motoren61 () {
+    i2c.comment("P1: RB-LED; C16: Grove Elektromagnet")
+    i2c.comment("3 Erweiterungen:")
+    i2c.comment("radio")
+    i2c.comment("calliope-net/i2c")
+    i2c.comment("calliope-net/motor")
+}
 let byte2 = 0
 let ready = false
 let oBuffer: i2c.i2cclass = null
