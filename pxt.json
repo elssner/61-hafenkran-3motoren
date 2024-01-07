@@ -4,9 +4,9 @@
     "dependencies": {
         "core": "*",
         "v1": "*",
-        "motor": "github:calliope-net/motor#v1.0.2",
+        "motor": "github:calliope-net/motor#v1.0.3",
         "radio": "*",
-        "i2c": "github:calliope-net/i2c#v2.1.0"
+        "i2c": "github:calliope-net/i2c#v2.1.1"
     },
     "files": [
         "main.blocks",

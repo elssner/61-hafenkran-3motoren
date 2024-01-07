@@ -7,7 +7,16 @@ radio.onReceivedNumber(function (receivedNumber) {
             basic.setLedColor(0x0000ff)
         }
         qwiicmotor.driveJoystick(qwiicmotor.qwiicmotor_eADDR(qwiicmotor.eADDR.Motor_x5D), receivedNumber)
-        motors.motorPower(oBuffer.getNumber(NumberFormat.Int8LE, 2))
+        byte2 = oBuffer.getNumber(NumberFormat.Int8LE, 2)
+        if (i2c.between(byte2, -100, 100)) {
+            motors.motorPower(byte2)
+        } else if (byte2 == 120) {
+            i2c.comment("Elektromagnet: 120:aus; 121: an")
+            pins.digitalWritePin(DigitalPin.C16, 0)
+        } else if (byte2 == 121) {
+            pins.digitalWritePin(DigitalPin.C16, 1)
+        }
+        i2c.comment("RB LED schalten")
         if (i2c.between(oBuffer.getNumber(NumberFormat.UInt8LE, 1), 120, 136)) {
             pins.digitalWritePin(DigitalPin.P1, 0)
         } else {
@@ -16,6 +25,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
     basic.turnRgbLedOff()
 })
+let byte2 = 0
 let ready = false
 let oBuffer: i2c.i2cclass = null
 radio.setGroup(3)
