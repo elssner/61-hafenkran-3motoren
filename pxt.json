@@ -1,5 +1,6 @@
 {
     "name": "61-hafenkran-3motoren",
+    "version": "0.0.1",
     "description": "",
     "dependencies": {
         "core": "*",
